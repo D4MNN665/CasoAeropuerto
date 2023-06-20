@@ -1,1 +1,1 @@
-Ir a la branch develop
+Estas en la branch main, ve a la branch develop
