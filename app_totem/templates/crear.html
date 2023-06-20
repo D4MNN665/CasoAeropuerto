@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Formulario</title>
+  <!-- Agrega el enlace al archivo CSS de Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Formulario de Reserva de Vehículos</h1>
+    
+    <form action="/crear" method="post">
+      <div class="form-group">
+        <label for="destino">Destino:</label>
+        <input type="text" class="form-control" id="destino" name="destino" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="cantidad_puertas">Cantidad de Puertas (Máx. 4):</label>
+        <input type="number" class="form-control" id="cantidad_puertas" name="cantidad_puertas" max="4" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="tipo_vehiculo">Tipo de Vehículo:</label>
+        <select class="form-control" id="tipo_vehiculo" name="tipo_vehiculo" required>
+          <option value="sedan">Sedán</option>
+          <option value="suv">SUV</option>
+          <option value="camion">Camión</option>
+          <option value="furgoneta">Furgoneta</option>
+          <option value="otros">Otros</option>
+        </select>
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+  </div>
+
+  <!-- Agrega los archivos JavaScript de Bootstrap al final del documento para mejorar el rendimiento -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
