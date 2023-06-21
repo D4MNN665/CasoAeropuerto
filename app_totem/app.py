@@ -3,9 +3,11 @@ import database as db
 app = Flask(__name__)
 
 
-@app.route("/")
+@app.route("/",methods=['GET', 'POST'])
 def inicio():
-    return render_template("totem.html")
+    if request.method == "POST":
+        return redirect('/solicitud-transfer')
+    return render_template("index.html")
 
 
 @app.route("/solicitud-transfer")
@@ -27,7 +29,21 @@ def crear():
     db.DATABASE.commit()
 
     print("Se creo el registro de manera exitosa ;)")
+    
     return redirect(url_for("inicio"))
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 if (__name__ == "__main__"):
