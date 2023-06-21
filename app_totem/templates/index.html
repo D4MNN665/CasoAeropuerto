@@ -1,74 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Seleccionar Idioma</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        .container {
-            max-width: 400px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        label {
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        select {
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-
-        button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            background-color: #4CAF50;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        .language-option {
-            margin-bottom: 5px;
-        }
-    </style>
-</head>
-<body>
+    <link rel="stylesheet" href="../static/style.css" />
+    <script src="../static/functions.js"></script>
+  </head>
+  <body>
     <div class="container">
-        <h1>Seleccionar Idioma</h1>
-        <form method="POST" action="/">
-            <label for="language">Selecciona tu idioma:</label>
-            <select id="language" name="language">
-                <option value="es" class="language-option">Español</option>
-                <option value="en" class="language-option">Inglés</option>
-                <option value="fr" class="language-option">Francés</option>
-            </select>
-            <button type="submit">Enviar</button>
-        </form>
+      <h1>Seleccionar Idioma</h1>
+      <form method="POST" action="/">
+        <label for="language">Selecciona tu idioma:</label>
+        <select id="language" name="language">
+          <option value="es" class="language-option">Español</option>
+          <option value="en" class="language-option">Inglés</option>
+          <option value="fr" class="language-option">Francés</option>
+        </select>
+        <button type="submit">Enviar</button>
+      </form>
     </div>
-</body>
+  </body>
 </html>
