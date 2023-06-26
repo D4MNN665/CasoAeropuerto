@@ -12,23 +12,26 @@
     <h1>Reserva de transfer</h1>
     
     <form action="/crear" method="post">
+
       <div class="form-group">
-        <label for="destino">Destino:</label>
+        <label for="nombrePasajero">Ingrese su nombre:</label>
+        <input type="text" class="form-control" id="nombrePasajero" name="nombrePasajero" max="3" required>
+      </div>
+
+      <div class="form-group">
+        <label for="destino">Ingrese Destino:</label>
         <input type="text" class="form-control" id="destino" name="destino" required>
       </div>
       
       <div class="form-group">
-        <label for="cantidad_puertas">Cantidad de Puertas (Máx. 4):</label>
-        <input type="number" class="form-control" id="cantidad_puertas" name="cantidad_puertas" max="4" required>
+        <label for="cantidad_puertas">Cantidad de Puertas (Máx. 3):</label>
+        <input type="number" class="form-control" id="cantidad_puertas" name="cantidad_puertas" max="3" required>
       </div>
       
       <div class="form-group">
         <label for="tipo_vehiculo">Tipo de Vehículo:</label>
         <select class="form-control" id="tipo_vehiculo" name="tipo_vehiculo" required>
           <option value="sedan">Sedán</option>
-          <option value="suv">SUV</option>
-          <option value="camion">Camión</option>
-          <option value="furgoneta">Furgoneta</option>
           <option value="otros">Otros</option>
         </select>
       </div>
