@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulario de Chofer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        #container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        form {
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 5px;
+            font-size: 16px;
+        }
+        
+        input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        
+        <form method="POST" action="/">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required><br><br>
+            
+            <label for="patente">Patente del vehículo:</label>
+            <input type="text" id="patente" name="patente" required><br><br>
+            
+            <label for="asientos">Asientos disponibles:</label>
+            <input type="text" id="asientos" name="asientos" required><br><br>
+            
+            <label for="lugar_estacionamiento">Lugar de estacionamiento:</label>
+            <input type="text" id="lugar_estacionamiento" name="lugar_estacionamiento" required><br><br>
+            
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+</body>
+</html>

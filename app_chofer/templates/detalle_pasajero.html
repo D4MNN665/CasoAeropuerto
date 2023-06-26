@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detalle del Pasajero</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .card {
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f5f5f5;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        p {
+            margin-bottom: 10px;
+        }
+        
+        .message {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .home-button {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .home-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>Detalle del Pasajero:</h1>
+            {% if pasajero %}
+                <p>Nombre: {{ pasajero['nombre'] }}</p>
+                <p>Destino: {{ pasajero['destino'] }}</p>
+                <p>Teléfono: {{ pasajero['telefono'] }}</p>
+                
+                <div class="button-container">
+                    <form>
+                        <input type="hidden" name="pasajero" value="{{ pasajero['nombre'] }}">
+                        <button class="home-button" onclick="confirmarPasajero()">Aceptar</button>
+                    </form>
+                    <form>
+                        <input type="hidden" name="pasajero" value="{{ pasajero['nombre'] }}">
+                        <button class="home-button" onclick="rechazarPasajero()">Rechazar</button>
+                    </form>
+                </div>
+                
+                <div id="message" class="message"></div>
+            {% else %}
+                <p>Pasajero no encontrado.</p>
+            {% endif %}
+        </div>
+    </div>
+    
+    <script>
+        function confirmarPasajero() {
+            var message = document.getElementById('message');
+            message.innerHTML = 'Espera al pasajero en el estacionamiento correspondiente.';
+        }
+        
+        function rechazarPasajero() {
+            var message = document.getElementById('message');
+            message.innerHTML = 'El pasajero ha sido rechazado.';
+        }
+    </script>
+</body>
+</html>
