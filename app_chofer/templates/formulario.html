@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>Formulario de Chofer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -32,6 +34,12 @@
             font-size: 16px;
         }
         
+        input[type="number"] {
+            width: 100%;
+            padding: 5px;
+            font-size: 16px;
+        }
+        
         input[type="submit"] {
             padding: 10px 20px;
             font-size: 16px;
@@ -48,22 +56,27 @@
 </head>
 <body>
     <div id="container">
-        
-        <form method="POST" action="/">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required><br><br>
-            
-            <label for="patente">Patente del vehículo:</label>
-            <input type="text" id="patente" name="patente" required><br><br>
-            
-            <label for="asientos">Asientos disponibles:</label>
-            <input type="text" id="asientos" name="asientos" required><br><br>
-            
+        <form method="POST" action="/mostrar">
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" name="nombre" required><br><br>
+      
+          <label for="patente">Patente del vehículo:</label>
+          <input type="text" id="patente" name="patente" required><br><br>
+      
+          <label for="asientos">Asientos disponibles:</label>
+          <input type="number" id="asientos" name="asientos" required max="3" ><br><br>
+      
+          <div class="form-group">
             <label for="lugar_estacionamiento">Lugar de estacionamiento:</label>
-            <input type="text" id="lugar_estacionamiento" name="lugar_estacionamiento" required><br><br>
-            
-            <input type="submit" value="Enviar">
+            <select class="form-control" id="lugar_estacionamiento" name="lugar_estacionamiento" required>
+              <option value="zona_norte">Zona Norte Aeropuerto</option>
+              <option value="zona_sur">Zona Sur Aeropuerto</option>
+            </select>
+          </div>
+      
+          <input type="submit" value="Enviar" class="btn btn-primary">
         </form>
-    </div>
+      </div>
+      
 </body>
 </html>

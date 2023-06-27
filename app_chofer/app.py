@@ -1,50 +1,35 @@
-from flask import Flask, render_template, request, redirect
-
+from flask import Flask, render_template, request, redirect, url_for
+import database as db
 app = Flask(__name__)
 
-# Lista de pasajeros disponibles (solo para ejemplo)
-pasajeros_disponibles = [
-    {'nombre': 'Pasajero 1', 'destino': 'Destino 1', 'telefono': '123456789'},
-    {'nombre': 'Pasajero 2', 'destino': 'Destino 2', 'telefono': '987654321'},
-    {'nombre': 'Pasajero 3', 'destino': 'Destino 3', 'telefono': '555555555'}
-]
 
-@app.route('/', methods=['GET', 'POST'])
-def index():
+@app.route('/',methods=["POST","GET"])
+def home():
     if request.method == 'POST':
-        nombre_chofer = request.form['nombre']
-        patente_vehiculo = request.form['patente']
-        asientos_disponibles = request.form['asientos']
-        lugar_estacionamiento = request.form['lugar_estacionamiento']
+        print("Pagina pasajero")
+        return render_template("pasajeros.html")
+    else:
+        print("Pagina formulario")
+        return render_template("formulario.html")
 
-        return render_template('pasajeros.html', pasajeros=pasajeros_disponibles,
-                               nombre_chofer=nombre_chofer, patente_vehiculo=patente_vehiculo,
-                               asientos_disponibles=asientos_disponibles,
-                               lugar_estacionamiento=lugar_estacionamiento)
-    
-    return render_template('formulario.html')
 
-@app.route('/pasajero/<nombre>', methods=['GET'])
-def ver_pasajero(nombre):
-    pasajero = None
-    for p in pasajeros_disponibles:
-        if p['nombre'] == nombre:
-            pasajero = p
-            break
-    
-    return render_template('detalle_pasajero.html', pasajero=pasajero)
+@app.route('/mostrar',methods=["POST","GET"])
+def pasajero():
+    if request.method == 'POST':
+        cursor = db.DATABASE.cursor()
+        cursor.execute("SELECT * FROM viajes")
+        viajes = cursor.fetchall()
+        # Convertir los datos a diccionario
+        insertObject = []
+        columnNames = [column[0] for column in cursor.description]
+        for record in viajes:
+            insertObject.append(dict(zip(columnNames, record)))
+        cursor.close()
+        print("Tome este camino")
+        return render_template("pasajeros.html",viajes=insertObject)
+    else:
+        return render_template("pasajeros.html")
 
-@app.route('/confirmar', methods=['POST'])
-def confirmar_pasajero():
-    nombre_pasajero = request.form.get('pasajero')
-    # Lógica para confirmar al pasajero
-    return redirect('/')
-
-@app.route('/rechazar', methods=['POST'])
-def rechazar_pasajero():
-    nombre_pasajero = request.form.get('pasajero')
-    # Lógica para rechazar al pasajero
-    return redirect('/')
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug="True")

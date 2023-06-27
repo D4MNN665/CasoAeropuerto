@@ -1,75 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Pasajeros Disponibles</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        
-        #container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh;
-        }
-        
-        .card {
-            max-width: 400px;
-            padding: 20px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #f5f5f5;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        
-        h1 {
-            text-align: center;
-        }
-        
-        .details-button {
-            padding: 8px 16px;
-            background-color: #4d8dd6;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        
-        .details-button:hover {
-            background-color: #45a049;
-        }
-        
-        a {
-            color: #4CAF50;
-            text-decoration: none;
-        }
-        
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <title>Vista Chofer</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <div id="container">
-        <h1>Pasajeros Disponibles:</h1>
-        {% for pasajero in pasajeros %}
-            <div class="card">
-                <p><strong>Nombre:</strong> {{ pasajero['nombre'] }}</p>
-                <p><strong>Destino:</strong> {{ pasajero['destino'] }}</p>
-                <a href="/pasajero/{{ pasajero['nombre'] }}">
-                    <button class="details-button">seleccionar</button>
-                </a>
-            </div>
-        {% endfor %}
-        
-        <h2>Detalles del Chofer:</h2>
-        <p>Nombre del chofer: {{ nombre_chofer }}</p>
-        <p>Patente del vehículo: {{ patente_vehiculo }}</p>
-        <p>Asientos disponibles: {{ asientos_disponibles }}</p>
-        <p>Lugar de estacionamiento: {{ lugar_estacionamiento }}</p>
+    <div class="container">
+        <h1>Lista de viajes pendientes</h1>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Destino</th>
+                        <th>Espacio requerido(puertas)</th>
+                        <th>Tipo de vehículo</th>
+                        <th>Nombre del pasajero</th>
+                        <th>Aceptar viaje</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    {% for d in viajes %}
+                    <tr>
+                        <td>{{d.destino}}</td>
+                        <td>{{d.cantidad_puertas}}</td>
+                        <td>{{d.tipo_vehiculo}}</td>
+                        <td>{{d.nombrePasajero}}</td>
+                        <td>
+                            <button type="submit" class="btn btn-success">Aceptar</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
+
+    <!-- Agrega el enlace al archivo JavaScript de Bootstrap (opcional) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
